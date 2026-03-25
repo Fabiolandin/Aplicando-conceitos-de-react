@@ -14,7 +14,7 @@ const Tarefas = () => {
 
             <div className="flex">
                 <Sidebar />
-            </div>
+            </div> 
             <div className="bg-white p-4 ml-10 mr-5 mt-10 mb-10 min-w-[500px] min-h-[500px] border rounded-lg shadow-lg">
                 <div className="flex items-center justify-between">
                     <h1 className="font-bold text-slate-900">Tarefas há fazer</h1>
