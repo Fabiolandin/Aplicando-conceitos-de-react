@@ -12,7 +12,7 @@ const DialogTarefas = () => {
     return(
     <div>
                         <Dialog>
-                        <DialogTrigger  asChild className="flex ml-auto">
+                        <DialogTrigger  asChild>
                             <Button variant="outline" className="text-green-600">
                                 <PlusIcon color="green"/>
                                 Criar Nova Tarefa</Button>
