@@ -1,7 +1,10 @@
-function App() {
+const App = () => {
   return (
-    <h1 className="text-red-500 text-4xl">Meu projeto</h1>
+    <div>
+      <h1>Olá</h1>
+    </div>
   )
 }
+
 
 export default App
