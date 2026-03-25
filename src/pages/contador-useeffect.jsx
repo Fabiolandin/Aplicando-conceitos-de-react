@@ -1,3 +1,4 @@
+import Sidebar from "@/components/Sidebar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useEffect, useState } from "react"
@@ -32,6 +33,8 @@ const ContadorUseEffect = () => {
     }
 
     return (
+        <div className="flex">
+        <Sidebar/>
         <div className="flex flex-col h-screen w-screen items-center justify-center gap-3">
             <Card className="w-[600px]">
                 <CardHeader>
@@ -68,6 +71,7 @@ const ContadorUseEffect = () => {
                     </Button>
                 </div>
             </Card>
+        </div>
         </div>
     )
 }

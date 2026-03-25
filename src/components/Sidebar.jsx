@@ -9,13 +9,14 @@ const Sidebar = () => {
                 <h1 className="text-white">Menu</h1>
                 <hr className="border-gray-700" />
                 
+                {/* 
                 <Button asChild variant="link" className="text-sm text-white justify-start">
                     <Link to="/contador">
                     <PlusIcon size={18} />
                     Contador
                     </Link>
                 </Button>
-
+                    */}
                 <Button asChild variant="link" className="text-sm text-white justify-start">
                     <Link to="/contador2">
                     <PlusIcon size={18} />

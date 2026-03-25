@@ -1,3 +1,4 @@
+import Sidebar from "@/components/Sidebar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { useState } from "react"
@@ -25,6 +26,8 @@ function Contador() {
   }
 
   return (
+    <div className="flex">
+      <Sidebar />
     <div className="flex flex-col h-screen w-screen items-center justify-center gap-3">
       <Card className="w-[600px]">
         <CardHeader>
@@ -62,6 +65,7 @@ function Contador() {
         </div>
       </Card>
     </div>
+        </div>
   )
 }
 
