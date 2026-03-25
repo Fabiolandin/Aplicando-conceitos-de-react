@@ -4,7 +4,7 @@ import { CheckSquare2Icon, PlusIcon, ShoppingCart } from "lucide-react"
 
 const Sidebar = () => {
     return (
-        < div className = "bg-gray-900 min-w-60 p-4 flex flex-col gap-2" >
+        < div className = "bg-gray-900 h-screen min-w-60 p-4 flex flex-col gap-2" >
             {/* Sideber */ }
                 <h1 className="text-white">Menu</h1>
                 <hr className="border-gray-700" />
@@ -24,14 +24,14 @@ const Sidebar = () => {
                 </Button>
 
                 <Button asChild variant="link" className="text-sm text-white justify-start">
-                    <Link to="/">
+                    <Link to="/tarefas">
                     <CheckSquare2Icon size={18} />
                     Tarefas
                     </Link>
                 </Button>
 
                 <Button asChild variant="link" className="text-sm text-white justify-start">
-                    <Link to="/"> 
+                    <Link to="/compras"> 
                     <ShoppingCart size={18} />
                     Compras
                     </Link>
