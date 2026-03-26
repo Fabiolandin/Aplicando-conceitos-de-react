@@ -43,10 +43,10 @@ const Tarefas = () => {
             <div className="flex">
                 <Sidebar />
             </div>
-            <div className="bg-white p-4 ml-10 mr-5 mt-10 mb-10 min-w-[500px] min-h-[500px] border rounded-lg shadow-lg">
+            <div className="bg-white p-4 ml-10 mr-5 mt-10 mb-10 min-w-125 min-h-125 border rounded-lg shadow-lg">
                 <div className="flex items-center justify-between">
                     <h1 className="font-bold text-slate-900">Tarefas há fazer</h1>
-                    <DialogTarefas />
+                    <DialogTarefas  dados={dados} setDados={setDados}/>
                 </div>
                 <div>
 
@@ -63,14 +63,14 @@ const Tarefas = () => {
 
             </div>
             {/* Tarefas Concluidas */}
-            <div className="bg-white p-4 ml-10 mr-5 mt-10 mb-10 min-w-[500px] min-h-[500px] rounded-lg  border rounded-lg shadow-lg">
-                <h1 className="font-bold text-green-800">Tarefas Concluidas</h1>
+            <div className="bg-white p-4 ml-10 mr-5 mt-10 mb-10 min-w-125 min-h-125 border rounded-lg shadow-lg">
+                <h1 className="font-bold text-slate-900">Tarefas Concluidas</h1>
                 <div>
 
                     <ul>
                         {tarefasFinalizadas.map((tarefa) => (
-                            <li onClick={() => EmAndamentoTarefa(tarefa)} className="flex p-1 mt-1 text-green-800" key={tarefa.id}>
-                                <Check size={22} className="text-green-800" />
+                            <li className="flex p-1 mt-1" key={tarefa.id}>
+                                <Check size={22} className="text-green-800" onClick={() => EmAndamentoTarefa(tarefa)}/>
                                 {tarefa.nome} - {tarefa.descricao}
                             </li>
                         ))}

@@ -36,7 +36,7 @@ const ContadorUseEffect = () => {
         <div className="flex">
         <Sidebar/>
         <div className="flex flex-col h-screen w-screen items-center justify-center gap-3">
-            <Card className="w-[600px]">
+            <Card className="w-150">
                 <CardHeader>
                     <CardTitle>Contador</CardTitle>
                     <CardDescription>Contador feito para aplicar conceitos aprendidos sem IA e com pouca ajuda externa</CardDescription>
