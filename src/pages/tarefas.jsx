@@ -1,8 +1,9 @@
 import DialogTarefas from "@/components/DialogTarefas";
 import Sidebar from "@/components/Sidebar";
 import { listadeTarefas } from "@/tarefas";
-import { Check, CheckLineIcon, Square, StopCircleIcon } from "lucide-react";
+import { CheckCircle, Square, Trash2Icon } from "lucide-react";
 import { useState } from "react";
+import { toast } from "sonner";
 const Tarefas = () => {
 
     const [dados, setDados] = useState(listadeTarefas)
@@ -13,10 +14,11 @@ const Tarefas = () => {
     //CHAMA A FUNÇÃO STATUSTAREFA E PASSADA A TAREFA QUE QUER EDITAR E O STATUS NOVO, POR ISSO ELA RECEBE STATUS 
     const concluirTarefa = (tarefa) => {
         statusTarefa(tarefa, "Finalizado")
+        toast.success("Tarefa concluida com sucesso!")
     }
 
     //CHAMA A FUNÇÃO STATUSTAREFA E PASSADA A TAREFA QUE QUER EDITAR E O STATUS NOVO, POR ISSO ELA RECEBE STATUS 
-    const EmAndamentoTarefa = (tarefa) => {
+    const emAndamentoTarefa = (tarefa) => {
         statusTarefa(tarefa, "Em aberto")
     }
 
@@ -37,13 +39,21 @@ const Tarefas = () => {
         console.log("newTarefa", newTarefa)
     }
 
-    return (
-        <div className="flex bg-[#FFFFFF]">
+    const excluirTarefa = (tarefa) => {
+        statusTarefa(tarefa, "Deletada")
+    }
 
+    return (
+        <div className="flex">
             <div className="flex">
                 <Sidebar />
             </div>
-            <div className="bg-white p-4 ml-10 mr-5 mt-10 mb-10 min-w-125 min-h-125 border rounded-lg shadow-lg">
+        <div className="flex p-5 gap-12
+        
+        ">
+            
+            {/* Tarefas há fazer */}
+            <div className=" p-4 flex-1 border rounded-lg shadow-lg">
                 <div className="flex items-center justify-between">
                     <h1 className="font-bold text-slate-900">Tarefas há fazer</h1>
                     <DialogTarefas  dados={dados} setDados={setDados}/>
@@ -52,9 +62,17 @@ const Tarefas = () => {
 
                     <ul>
                         {tarefasEmAberto.map((tarefa) => (
-                            <li  className="flex p-1 mt-1 text-gray-900" key={tarefa.id}>
-                                <Square size={22} className="text-slate-900" onClick={() => concluirTarefa(tarefa)}/>
+                            <li  
+                            className="
+                            flex p-1 mt-1 text-gray-900 hover:bg-gray-200 transition rounded-lg items-center" 
+                            key={tarefa.id}
+                            >
+                                <Square size={22} className="text-slate-900 mr-1" onClick={() => concluirTarefa(tarefa)}/>
                                 {tarefa.nome} - {tarefa.descricao}
+                                <Trash2Icon 
+                                onClick={() => excluirTarefa(tarefa)}
+                                size={22} 
+                                className="ml-auto items-center text-gray-400"/>
                             </li>
                         ))}
                     </ul>
@@ -63,14 +81,19 @@ const Tarefas = () => {
 
             </div>
             {/* Tarefas Concluidas */}
-            <div className="bg-white p-4 ml-10 mr-5 mt-10 mb-10 min-w-125 min-h-125 border rounded-lg shadow-lg">
+            <div className=" p-4 flex-1 border rounded-lg shadow-lg">
                 <h1 className="font-bold text-slate-900">Tarefas Concluidas</h1>
                 <div>
 
                     <ul>
                         {tarefasFinalizadas.map((tarefa) => (
-                            <li className="flex p-1 mt-1" key={tarefa.id}>
-                                <Check size={22} className="text-green-800" onClick={() => EmAndamentoTarefa(tarefa)}/>
+                            <li 
+                            className="
+                            flex p-1 mt-1 hover:bg-gray-200 transition rounded-lg items-center " 
+                            key={tarefa.id}
+                            onClick={() => emAndamentoTarefa(tarefa)}
+                            >
+                                <CheckCircle size={20} className="text-green-800 mr-1"/>
                                 {tarefa.nome} - {tarefa.descricao}
                             </li>
                         ))}
@@ -79,6 +102,7 @@ const Tarefas = () => {
                 </div>
             </div>
 
+        </div>
         </div>
     )
 }

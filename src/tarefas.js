@@ -9,4 +9,6 @@ export const listadeTarefas = [
     {id: 8, nome: "Lavar o Carro", descricao: "Levar no posto ou lavar na garagem", status: "Finalizado"},
     {id: 9, nome: "Organizar Mesa", descricao: "Limpar setup e organizar cabos", status: "Em aberto"},
     {id: 10, nome: "Ler Livro Tecnológico", descricao: "Ler 10 páginas de 'Código Limpo'", status: "Finalizado"},
+    {id: 11, nome: "Treino de Reabilitação", descricao: "Treino de reabilitação do joelho com carga", status: "Finalizado"},
+    {id: 12, nome: "Soneca pós almoço", descricao: "Soneca naquele sofazinho do Allamo", status: "Finalizado"},
 ];
