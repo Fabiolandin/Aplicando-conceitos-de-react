@@ -34,7 +34,7 @@ return (
             <DialogTrigger asChild>
                 <Button variant="outline" className="text-green-600">
                     <PlusIcon color="green" />
-                    Criar Nova Tarefa</Button>
+                    Nova Tarefa</Button>
             </DialogTrigger>
             <DialogContent>
                 <form onSubmit={handleSubmit}>

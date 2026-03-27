@@ -3,7 +3,7 @@ import Sidebar from "@/components/Sidebar";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { listadeTarefas } from "@/tarefas";
-import { CheckCircle, Square, Trash2Icon } from "lucide-react";
+import { CheckCircle, Loader2Icon, Square, Trash2Icon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 const Tarefas = () => {
@@ -11,6 +11,7 @@ const Tarefas = () => {
     const [dados, setDados] = useState(listadeTarefas)
 
     const tarefasEmAberto = dados.filter((tarefas) => tarefas.status === "Em aberto")
+    const tarefasEmAndamento = dados.filter((tarefas) => tarefas.status === "Em andamento")
     const tarefasFinalizadas = dados.filter((tarefas) => tarefas.status === "Finalizado")
 
     //CHAMA A FUNÇÃO STATUSTAREFA E PASSADA A TAREFA QUE QUER EDITAR E O STATUS NOVO, POR ISSO ELA RECEBE STATUS 
@@ -20,8 +21,13 @@ const Tarefas = () => {
     }
 
     //CHAMA A FUNÇÃO STATUSTAREFA E PASSADA A TAREFA QUE QUER EDITAR E O STATUS NOVO, POR ISSO ELA RECEBE STATUS 
-    const emAndamentoTarefa = (tarefa) => {
+    const emAbertoTarefa = (tarefa) => {
         statusTarefa(tarefa, "Em aberto")
+    }
+
+    //CHAMA A FUNÇÃO STATUSTAREFA E PASSADA A TAREFA QUE QUER EDITAR E O STATUS NOVO, POR ISSO ELA RECEBE STATUS 
+    const emAndamentoTarefa = (tarefa) => {
+        statusTarefa(tarefa, "Em andamento")
     }
 
     //FUNÇÃO STATUS TAREFA QUE RECEBE OS PARAMETROS TAREFA E STATUS
@@ -47,66 +53,106 @@ const Tarefas = () => {
 
     return (
         <div className="flex">
+
             <div className="flex">
                 <Sidebar />
             </div>
-        <div className="flex p-5 gap-12
-        
-        ">
             
-            {/* Tarefas há fazer */}
-            <div className=" p-4 flex-1 border rounded-lg shadow-lg">
-                <div className="flex items-center justify-between">
-                    <h1 className="font-bold text-slate-900">Tarefas há fazer</h1>
-                    <DialogTarefas  dados={dados} setDados={setDados}/>
-                </div>
-                <div>
+            <div className="flex p-5 gap-12">
 
-                        <ScrollArea className="h-[460px] w-full">
-                        {tarefasEmAberto.map((tarefa) => (
-                            <Card  
-                            className="
-                            flex mt-1 text-gray-900 hover:bg-gray-200 transition rounded-lg " 
-                            key={tarefa.id}
-                            >
-                                <CardContent className="flex items-center">
-                                <Square size={22} className="text-slate-900 mr-1" onClick={() => concluirTarefa(tarefa)}/>
-                                {tarefa.nome} - {tarefa.descricao}
-                                <Trash2Icon 
-                                onClick={() => excluirTarefa(tarefa)}
-                                size={22} 
-                                className="ml-auto items-center text-gray-400"/>
-                                </CardContent>
-                            </Card>
-                        ))}
+                {/* Tarefas em aberto */}
+                <div className=" p-4 flex-1 border rounded-lg shadow-lg">
+                    <div className="flex items-center justify-between">
+                        <h1 className="font-bold text-slate-900">Tarefas em aberto</h1>
+                        <DialogTarefas dados={dados} setDados={setDados} />
+                    </div>
+                    <div>
+
+                        <ScrollArea className="h-115 w-full">
+                            {tarefasEmAberto.map((tarefa) => (
+                                <Card
+                                    className="
+                            flex mt-1 text-gray-900 hover:bg-gray-200 transition rounded-lg "
+                                    key={tarefa.id}
+                                >
+                                    <CardContent className="flex items-center">
+                                        <Square size={22} className="text-slate-900 mr-1" onClick={() => emAndamentoTarefa(tarefa)} />
+                                        {tarefa.nome}
+                                        <Trash2Icon
+                                            onClick={() => excluirTarefa(tarefa)}
+                                            size={22}
+                                            className="ml-auto items-center text-gray-400" />
+                                    </CardContent>
+                                </Card>
+                            ))}
                         </ScrollArea>
 
-                </div>
-
-            </div>
-            {/* Tarefas Concluidas */}
-            <div className=" p-4 flex-1 border rounded-lg shadow-lg">
-                <h1 className="font-bold text-slate-900">Tarefas Concluidas</h1>
-                <div>
-
-                    <ul>
-                        {tarefasFinalizadas.map((tarefa) => (
-                            <li 
-                            className="
-                            flex p-1 mt-1 hover:bg-gray-200 transition rounded-lg items-center " 
-                            key={tarefa.id}
-                            onClick={() => emAndamentoTarefa(tarefa)}
-                            >
-                                <CheckCircle size={20} className="text-green-800 mr-1"/>
-                                {tarefa.nome} - {tarefa.descricao}
-                            </li>
-                        ))}
-                    </ul>
+                    </div>
 
                 </div>
-            </div>
 
-        </div>
+                {/* Tarefas em andamento */}
+                <div className=" p-4 flex-1 border rounded-lg shadow-lg">
+                    <div className="flex items-center justify-between">
+                        <h1 className="font-bold text-slate-900">Tarefas em andamento</h1>
+                    </div>
+                    <div>
+
+                        <ScrollArea className="h-115 w-full">
+                            {tarefasEmAndamento.map((tarefa) => (
+                                <Card
+                                    className="
+                            flex mt-1 text-amber-500 hover:bg-gray-200 transition rounded-lg "
+                                    key={tarefa.id}
+                                >
+                                    <CardContent className="flex items-center">
+                                        <Loader2Icon size={22} className="animate-spin text-amber-500 mr-1" onClick={() => concluirTarefa(tarefa)} />
+                                        {tarefa.nome}
+                                        <Trash2Icon
+                                            onClick={() => excluirTarefa(tarefa)}
+                                            size={22}
+                                            className="ml-auto items-center text-gray-400" />
+                                    </CardContent>
+                                </Card>
+                            ))}
+                        </ScrollArea>
+
+                    </div>
+
+                </div>
+
+                {/* Tarefas Concluidas */}
+                <div className=" p-4 flex-1 border rounded-lg shadow-lg">
+                    <div className="flex items-center justify-between">
+                        <h1 className="font-bold text-slate-900">Tarefas Concluidas</h1>
+                    </div>
+                    <div>
+
+                        <ScrollArea className="h-115 w-full">
+                            {tarefasFinalizadas.map((tarefa) => (
+                                <Card
+                                    className="
+                            flex mt-1 text-green-800 hover:bg-gray-200 transition rounded-lg "
+                                    key={tarefa.id}
+                                >
+                                    <CardContent className="flex items-center">
+                                        <CheckCircle size={22} className=" text-green-800 mr-1" onClick={() => emAbertoTarefa(tarefa)} />
+                                        {tarefa.nome}
+                                        <Trash2Icon
+                                            onClick={() => excluirTarefa(tarefa)}
+                                            size={22}
+                                            className="ml-auto items-center text-gray-400" />
+                                    </CardContent>
+                                </Card>
+                            ))}
+                        </ScrollArea>
+
+                    </div>
+
+                </div>
+
+
+            </div>
         </div>
     )
 }
