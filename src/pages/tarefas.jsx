@@ -1,5 +1,7 @@
 import DialogTarefas from "@/components/DialogTarefas";
 import Sidebar from "@/components/Sidebar";
+import { Card, CardContent } from "@/components/ui/card";
+import { ScrollArea } from "@/components/ui/scroll-area";
 import { listadeTarefas } from "@/tarefas";
 import { CheckCircle, Square, Trash2Icon } from "lucide-react";
 import { useState } from "react";
@@ -60,22 +62,24 @@ const Tarefas = () => {
                 </div>
                 <div>
 
-                    <ul>
+                        <ScrollArea className="h-[460px] w-full">
                         {tarefasEmAberto.map((tarefa) => (
-                            <li  
+                            <Card  
                             className="
-                            flex p-1 mt-1 text-gray-900 hover:bg-gray-200 transition rounded-lg items-center" 
+                            flex mt-1 text-gray-900 hover:bg-gray-200 transition rounded-lg " 
                             key={tarefa.id}
                             >
+                                <CardContent className="flex items-center">
                                 <Square size={22} className="text-slate-900 mr-1" onClick={() => concluirTarefa(tarefa)}/>
                                 {tarefa.nome} - {tarefa.descricao}
                                 <Trash2Icon 
                                 onClick={() => excluirTarefa(tarefa)}
                                 size={22} 
                                 className="ml-auto items-center text-gray-400"/>
-                            </li>
+                                </CardContent>
+                            </Card>
                         ))}
-                    </ul>
+                        </ScrollArea>
 
                 </div>
 
