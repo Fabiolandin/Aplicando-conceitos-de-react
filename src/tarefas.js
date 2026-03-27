@@ -11,4 +11,13 @@ export const listadeTarefas = [
     {id: 10, nome: "Ler Livro Tecnológico", descricao: "Ler 10 páginas de 'Código Limpo'", status: "Finalizado"},
     {id: 11, nome: "Treino de Reabilitação", descricao: "Treino de reabilitação do joelho com carga", status: "Finalizado"},
     {id: 12, nome: "Soneca pós almoço", descricao: "Soneca naquele sofazinho do Allamo", status: "Finalizado"},
+    {id: 13, nome: "Jogar Futebol as 11", descricao: "", status: "Finalizado"},
+    {id: 14, nome: "Ir a consulta médica", descricao: "", status: "Em andamento"},
+    {id: 15, nome: "Platinar The Witcher 3", descricao: "", status: "Em andamento"},
+    {id: 16, nome: "Termianer módulo de tarefas", descricao: "", status: "Em andamento"},
+    {id: 17, nome: "Terminar Tarefa de KanBan", descricao: "", status: "Em andamento"},
+    {id: 18, nome: "Revisar Conteúdos aprendidos", descricao: "", status: "Em andamento"},
+    {id: 19, nome: "Estudar JavaScript", descricao: "", status: "Em andamento"},
+    {id: 20, nome: "Estudar React", descricao: "", status: "Em andamento"},
+
 ];

@@ -3,7 +3,7 @@ import Sidebar from "@/components/Sidebar";
 import { Card, CardContent } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { listadeTarefas } from "@/tarefas";
-import { CheckCircle, Loader2Icon, Square, Trash2Icon } from "lucide-react";
+import { CheckCircle, EyeIcon, Loader2Icon, Square, Trash2Icon } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 const Tarefas = () => {
@@ -52,43 +52,42 @@ const Tarefas = () => {
     }
 
     return (
-        <div className="flex">
+        <div className="flex h-screen w-full">
 
-            <div className="flex">
                 <Sidebar />
-            </div>
             
-            <div className="flex p-5 gap-12">
+            <div className="flex p-5 gap-4 flex-1 h-screen w-full md:flex-row flex-col">
 
                 {/* Tarefas em aberto */}
-                <div className=" p-4 flex-1 border rounded-lg shadow-lg">
+                <div className=" p-4 flex-1  border rounded-lg shadow-lg">
                     <div className="flex items-center justify-between">
                         <h1 className="font-bold text-slate-900">Tarefas em aberto</h1>
                         <DialogTarefas dados={dados} setDados={setDados} />
                     </div>
-                    <div>
-
-                        <ScrollArea className="h-115 w-full">
+              
+                        <ScrollArea className="w-full h-[85vh]">
                             {tarefasEmAberto.map((tarefa) => (
                                 <Card
                                     className="
                             flex mt-1 text-gray-900 hover:bg-gray-200 transition rounded-lg "
                                     key={tarefa.id}
                                 >
-                                    <CardContent className="flex items-center">
-                                        <Square size={22} className="text-slate-900 mr-1" onClick={() => emAndamentoTarefa(tarefa)} />
+                                    <CardContent className="flex items-center gap-2">
+                                        <Square size={22} className="text-slate-900" onClick={() => emAndamentoTarefa(tarefa)} />
                                         {tarefa.nome}
+                                        <EyeIcon 
+                                        className="ml-auto text-gray-600"
+                                        />
                                         <Trash2Icon
                                             onClick={() => excluirTarefa(tarefa)}
                                             size={22}
-                                            className="ml-auto items-center text-gray-400" />
+                                            className="items-center text-red-500" />
                                     </CardContent>
                                 </Card>
                             ))}
                         </ScrollArea>
 
-                    </div>
-
+            
                 </div>
 
                 {/* Tarefas em andamento */}
@@ -98,7 +97,7 @@ const Tarefas = () => {
                     </div>
                     <div>
 
-                        <ScrollArea className="h-115 w-full">
+                        <ScrollArea className="w-full h-[85vh]">
                             {tarefasEmAndamento.map((tarefa) => (
                                 <Card
                                     className="
@@ -128,7 +127,7 @@ const Tarefas = () => {
                     </div>
                     <div>
 
-                        <ScrollArea className="h-115 w-full">
+                        <ScrollArea className="w-full h-[85vh]">
                             {tarefasFinalizadas.map((tarefa) => (
                                 <Card
                                     className="
