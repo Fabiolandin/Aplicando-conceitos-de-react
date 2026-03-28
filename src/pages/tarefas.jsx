@@ -85,7 +85,7 @@ const Tarefas = () => {
                                     {tarefa.nome}
                                     <EyeIcon
                                         className="ml-auto text-gray-400"
-                                        onClick={() => handleDialogOpen(tarefa)} 
+                                        onClick={() => handleDialogOpen(tarefa)}
                                     />
                                     <Trash2Icon
                                         onClick={() => excluirTarefa(tarefa)}
@@ -113,13 +113,17 @@ const Tarefas = () => {
                             flex mt-1 text-amber-500 hover:bg-gray-200 transition rounded-lg "
                                     key={tarefa.id}
                                 >
-                                    <CardContent className="flex items-center">
+                                    <CardContent className="flex items-center gap-2">
                                         <Loader2Icon size={22} className="animate-spin text-amber-500 mr-1" onClick={() => concluirTarefa(tarefa)} />
                                         {tarefa.nome}
+                                        <EyeIcon
+                                            className="ml-auto text-gray-400"
+                                            onClick={() => handleDialogOpen(tarefa)}
+                                        />
                                         <Trash2Icon
                                             onClick={() => excluirTarefa(tarefa)}
                                             size={22}
-                                            className="ml-auto items-center text-gray-400" />
+                                            className="items-center text-gray-400" />
                                     </CardContent>
                                 </Card>
                             ))}
@@ -143,13 +147,17 @@ const Tarefas = () => {
                             flex mt-1 text-green-800 hover:bg-gray-200 transition rounded-lg "
                                     key={tarefa.id}
                                 >
-                                    <CardContent className="flex items-center">
+                                    <CardContent className="flex items-center gap-2">
                                         <CheckCircle size={22} className=" text-green-800 mr-1" onClick={() => emAbertoTarefa(tarefa)} />
                                         {tarefa.nome}
+                                        <EyeIcon
+                                            className="ml-auto text-gray-400"
+                                            onClick={() => handleDialogOpen(tarefa)}
+                                        />
                                         <Trash2Icon
                                             onClick={() => excluirTarefa(tarefa)}
                                             size={22}
-                                            className="ml-auto items-center text-gray-400" />
+                                            className="items-center text-gray-400" />
                                     </CardContent>
                                 </Card>
                             ))}
@@ -160,7 +168,7 @@ const Tarefas = () => {
                 </div>
 
                 <DialogDetails open={open} setOpen={setOpen} tarefaSelecionada={tarefaSelecionada} />
-                            
+
             </div>
 
         </div>
