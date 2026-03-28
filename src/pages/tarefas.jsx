@@ -1,3 +1,4 @@
+import DialogDetails from "@/components/DialogDetails";
 import DialogTarefas from "@/components/DialogTarefas";
 import Sidebar from "@/components/Sidebar";
 import { Card, CardContent } from "@/components/ui/card";
@@ -9,6 +10,13 @@ import { toast } from "sonner";
 const Tarefas = () => {
 
     const [dados, setDados] = useState(listadeTarefas)
+    const [open, setOpen] = useState(false);
+    const [tarefaSelecionada, setTarefaSelecionada] = useState(null);
+
+    const handleDialogOpen = (tarefa) => {
+        setTarefaSelecionada(tarefa)
+        setOpen(true)
+    }
 
     const tarefasEmAberto = dados.filter((tarefas) => tarefas.status === "Em aberto")
     const tarefasEmAndamento = dados.filter((tarefas) => tarefas.status === "Em andamento")
@@ -54,8 +62,8 @@ const Tarefas = () => {
     return (
         <div className="flex h-screen w-full">
 
-                <Sidebar />
-            
+            <Sidebar />
+
             <div className="flex p-5 gap-4 flex-1 h-screen w-full md:flex-row flex-col">
 
                 {/* Tarefas em aberto */}
@@ -64,30 +72,31 @@ const Tarefas = () => {
                         <h1 className="font-bold text-slate-900">Tarefas em aberto</h1>
                         <DialogTarefas dados={dados} setDados={setDados} />
                     </div>
-              
-                        <ScrollArea className="w-full h-[85vh]">
-                            {tarefasEmAberto.map((tarefa) => (
-                                <Card
-                                    className="
-                            flex mt-1 text-gray-900 hover:bg-gray-200 transition rounded-lg "
-                                    key={tarefa.id}
-                                >
-                                    <CardContent className="flex items-center gap-2">
-                                        <Square size={22} className="text-slate-900" onClick={() => emAndamentoTarefa(tarefa)} />
-                                        {tarefa.nome}
-                                        <EyeIcon 
-                                        className="ml-auto text-gray-600"
-                                        />
-                                        <Trash2Icon
-                                            onClick={() => excluirTarefa(tarefa)}
-                                            size={22}
-                                            className="items-center text-red-500" />
-                                    </CardContent>
-                                </Card>
-                            ))}
-                        </ScrollArea>
 
-            
+                    <ScrollArea className="w-full h-[85vh]">
+                        {tarefasEmAberto.map((tarefa) => (
+                            <Card
+                                className="
+                            flex mt-1 text-gray-900 hover:bg-gray-200 transition rounded-lg "
+                                key={tarefa.id}
+                            >
+                                <CardContent className="flex items-center gap-2">
+                                    <Square size={22} className="text-slate-900" onClick={() => emAndamentoTarefa(tarefa)} />
+                                    {tarefa.nome}
+                                    <EyeIcon
+                                        className="ml-auto text-gray-400"
+                                        onClick={() => handleDialogOpen(tarefa)} 
+                                    />
+                                    <Trash2Icon
+                                        onClick={() => excluirTarefa(tarefa)}
+                                        size={22}
+                                        className="items-center text-red-500" />
+                                </CardContent>
+                            </Card>
+                        ))}
+                    </ScrollArea>
+
+
                 </div>
 
                 {/* Tarefas em andamento */}
@@ -150,10 +159,14 @@ const Tarefas = () => {
 
                 </div>
 
-
+                <DialogDetails open={open} setOpen={setOpen} tarefaSelecionada={tarefaSelecionada} />
+                            
             </div>
+
         </div>
+
     )
+
 }
 
 export default Tarefas;

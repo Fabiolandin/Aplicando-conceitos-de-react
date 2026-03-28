@@ -4,23 +4,17 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 
 const Menu = () => {
     return (
-        <div className="flex h-screen">
+        <div className="flex h-screen w-full">
             <Sidebar />
 
             {/* Card */}
             <div className="w-full flex justify-center items-center">
-                <Card className="min-w-[90%]  p-2 justify-center">
+                <Card className="min-w-[90%] p-2 justify-center shadow">
                     <CardHeader>
                         <CardTitle>Card De dialogs</CardTitle>
                         <CardDescription>Card para Abertura de Dialogs </CardDescription>
                     </CardHeader>
                     <CardContent>
-                        <h1>Descrição</h1>
-                        <h1>Descrição</h1>
-                        <h1>Descrição</h1>
-                        <h1>Descrição</h1>
-                        <h1>Descrição</h1>
-                        <h1>Descrição</h1>
                         <h1>Descrição</h1>
                         <h1>Descrição</h1>
                         <h1>Descrição</h1>

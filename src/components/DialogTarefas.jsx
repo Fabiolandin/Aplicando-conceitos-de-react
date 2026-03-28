@@ -22,8 +22,11 @@ const DialogTarefas = ({dados, setDados}) => {
         }
         
         setDados([...dados, novatarefa])
-        console.log(novatarefa)
-        console.log(dados)
+        //GARANTINDO QUE QUANDO ELE FOR ABERTO NOVAMENTE OS REGISTROS ANTIGOS SUMIRAM
+        settituloTarefa(null)
+        setdescricaoTarefa(null)
+
+
 }
 
 
