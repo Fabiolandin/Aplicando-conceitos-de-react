@@ -123,7 +123,7 @@ const Tarefas = () => {
                                         <Trash2Icon
                                             onClick={() => excluirTarefa(tarefa)}
                                             size={22}
-                                            className="items-center text-gray-400" />
+                                            className="items-center text-red-500" />
                                     </CardContent>
                                 </Card>
                             ))}
@@ -157,7 +157,7 @@ const Tarefas = () => {
                                         <Trash2Icon
                                             onClick={() => excluirTarefa(tarefa)}
                                             size={22}
-                                            className="items-center text-gray-400" />
+                                            className="items-center text-red-500" />
                                     </CardContent>
                                 </Card>
                             ))}
