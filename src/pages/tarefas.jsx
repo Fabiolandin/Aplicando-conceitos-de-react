@@ -77,10 +77,10 @@ const Tarefas = () => {
                         {tarefasEmAberto.map((tarefa) => (
                             <Card
                                 className="
-                            flex mt-1 text-gray-900 hover:bg-gray-200 transition rounded-lg "
+                            flex mt-1 text-gray-900 hover:bg-gray-100 transition rounded-lg shadow"
                                 key={tarefa.id}
                             >
-                                <CardContent className="flex items-center gap-2">
+                                <CardContent className="flex items-center gap-2 font-medium text-sm">
                                     <Square size={22} className="text-slate-900" onClick={() => emAndamentoTarefa(tarefa)} />
                                     {tarefa.nome}
                                     <EyeIcon
@@ -110,7 +110,7 @@ const Tarefas = () => {
                             {tarefasEmAndamento.map((tarefa) => (
                                 <Card
                                     className="
-                            flex mt-1 text-amber-500 hover:bg-gray-200 transition rounded-lg "
+                            flex mt-1 text-amber-500 hover:bg-gray-100 transition rounded-lg shadown"
                                     key={tarefa.id}
                                 >
                                     <CardContent className="flex items-center gap-2">
@@ -144,7 +144,7 @@ const Tarefas = () => {
                             {tarefasFinalizadas.map((tarefa) => (
                                 <Card
                                     className="
-                            flex mt-1 text-green-800 hover:bg-gray-200 transition rounded-lg "
+                            flex mt-1 text-green-500 hover:bg-gray-100 transition rounded-lg shadow "
                                     key={tarefa.id}
                                 >
                                     <CardContent className="flex items-center gap-2">

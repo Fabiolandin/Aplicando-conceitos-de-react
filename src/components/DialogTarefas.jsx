@@ -40,13 +40,13 @@ return (
                     Nova Tarefa</Button>
             </DialogTrigger>
             <DialogContent>
-                <form onSubmit={handleSubmit}>
-                    <DialogHeader>
+                    <DialogHeader >
                         <DialogTitle className="text-slate-900">Criar nova tarefa</DialogTitle>
                         <DialogDescription className="text-slate-700">Digite todos os campos abaixo</DialogDescription>
                     </DialogHeader>
-                    <div>
-                        <h1 className="text-slate-900">Nome da Tarefa:</h1>
+                <form onSubmit={handleSubmit} className="mb-1">
+                    <div className="mb-3">
+                        <label className="text-slate-900">Nome da Tarefa:</label>
                         <Input
                             placeholder="Digite o nome da tarefa"
                             value={tituloTarefa}
@@ -54,15 +54,15 @@ return (
                         />
                     </div>
 
-                    <div>
-                        <h1 className="text-slate-900">Descrição da Tarefa:</h1>
+                    <div className="mb-3">
+                        <label className="text-slate-900">Descrição da Tarefa:</label>
                         <Input
                             placeholder="Digite a descrição da tarefa"
                             value={descricaoTarefa}
                             onChange={(e) => setdescricaoTarefa(e.target.value)}
                         />
                     </div>
-                    <DialogFooter>
+                    <DialogFooter className="mt-1">
                         <DialogTrigger asChild>
                         <Button
                             className="bg-slate-900 flex flex-1"
