@@ -69,7 +69,7 @@ const Tarefas = () => {
                 {/* Tarefas em aberto */}
                 <div className=" p-4 flex-1  border rounded-lg shadow-lg">
                     <div className="flex items-center justify-between">
-                        <h1 className="font-bold text-slate-900">Tarefas em aberto</h1>
+                        <h1 className="font-bold text-slate-900">Tarefas em aberto {tarefasEmAberto.length}</h1>
                         <DialogTarefas dados={dados} setDados={setDados} />
                     </div>
 
@@ -102,7 +102,7 @@ const Tarefas = () => {
                 {/* Tarefas em andamento */}
                 <div className=" p-4 flex-1 border rounded-lg shadow-lg">
                     <div className="flex items-center justify-between">
-                        <h1 className="font-bold text-slate-900">Tarefas em andamento</h1>
+                        <h1 className="font-bold text-slate-900">Tarefas em andamento {tarefasEmAndamento.length}</h1>
                     </div>
                     <div>
 
@@ -112,6 +112,7 @@ const Tarefas = () => {
                                     className="
                             flex mt-1 text-amber-500 hover:bg-gray-100 transition rounded-lg shadown"
                                     key={tarefa.id}
+
                                 >
                                     <CardContent className="flex items-center gap-2">
                                         <Loader2Icon size={22} className="animate-spin text-amber-500 mr-1" onClick={() => concluirTarefa(tarefa)} />
@@ -136,7 +137,7 @@ const Tarefas = () => {
                 {/* Tarefas Concluidas */}
                 <div className=" p-4 flex-1 border rounded-lg shadow-lg">
                     <div className="flex items-center justify-between">
-                        <h1 className="font-bold text-slate-900">Tarefas Concluidas</h1>
+                        <h1 className="font-bold text-slate-900">Tarefas Concluidas {tarefasFinalizadas.length}</h1>
                     </div>
                     <div>
 
