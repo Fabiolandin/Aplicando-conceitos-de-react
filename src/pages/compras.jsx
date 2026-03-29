@@ -1,16 +1,28 @@
+import DialogCompras from "@/components/DialogCompras"
 import Sidebar from "@/components/Sidebar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { listadeCompras } from "@/compras"
+import { EyeIcon, Trash2Icon } from "lucide-react"
 import { useState } from "react"
 
 
 
 const Compras = () => {
+
+    //states para o dialog
+    const [open, setOpen] = useState(false);
+    const [tarefasSelecionada, setTarefasSelecionadas] = useState(null);
+
     const [dados, setDados] = useState(listadeCompras)
 
     const comprasComprar = dados.filter((compras) => compras.status === "comprar")
     const comprasComprado = dados.filter((compras) => compras.status === "comprado")
+
+    const handleDialogOpen = (tarefa) => {
+        setTarefasSelecionadas(tarefa)
+        setOpen(true)
+    }
 
     return (
         <div className="flex">
@@ -43,19 +55,31 @@ const Compras = () => {
 
                 {/* Div de tabelas*/}
                 <div className="flex-1 flex p-4 gap-8 bg-amber-300">
-                    <Card className="flex-1 shadow">
+
+                    {/*Card de compras */}
+                    <Card className="flex-1 shadow ">
                         <CardHeader className="flex">
                             <CardTitle>Lista de compras</CardTitle>
                             <Button variant="outline" className="items-center ml-auto">Criar novo item</Button>
                         </CardHeader>
                         {comprasComprar.map((compra) => (
-                            <Card key={compra.id} className="ml-3 mr-3">
-                                <CardContent className="">{compra.nome} - R${compra.valor}</CardContent>
+                            <Card key={compra.id} className="ml-3 mr-3 hover:bg-gray-100">
+                                <CardContent
+                                    className="flex items-center "
+                                >
+                                    {compra.nome} - R${compra.valor}
+                                    <EyeIcon
+                                        className="ml-auto mr-2"
+                                        onClick={() => handleDialogOpen(compra)}
+                                    />
+                                    <Trash2Icon />
+                                </CardContent>
                             </Card>
 
                         ))}
                     </Card>
 
+                    {/*Card de já comprados */}
                     <Card className="flex-1 shadow">
                         <CardHeader>
                             <CardTitle>Já comprados</CardTitle>
@@ -66,9 +90,12 @@ const Compras = () => {
                             </Card>
                         ))}
                     </Card>
+                    <DialogCompras open={open} setOpen={setOpen} comprasComprar={tarefasSelecionada} />
+
                 </div>
 
             </div>
+
         </div>
     )
 }
