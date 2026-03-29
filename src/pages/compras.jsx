@@ -25,6 +25,12 @@ const Compras = () => {
     }
 
 
+    //valor comprar recebe a lista.reduce o reduce percorre a lista recebendo de parametro total e compra
+    const valorComprar = comprasComprar.reduce((total, compra) => {
+        return total + compra.valor
+    }, 0)
+
+
     const handleCompraStatus = (compra, status) => {
         const compraStatus = {
             ...compra,
@@ -49,7 +55,7 @@ const Compras = () => {
                     <Card className="flex-1 h-37.5 shadow items-center">
                         <CardContent className="flex items-center flex-col">
                             <h1 className="text-lg font-medium">Valor de itens a serem comprados</h1>
-                            <h1 className="text-[70px] font-medium">100</h1>
+                            <h1 className="text-[70px] font-medium">{valorComprar}</h1>
                         </CardContent>
                     </Card>
 
