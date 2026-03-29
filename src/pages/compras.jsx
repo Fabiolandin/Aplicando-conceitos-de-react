@@ -24,6 +24,21 @@ const Compras = () => {
         setOpen(true)
     }
 
+
+    const handleCompraStatus = (compra, status) => {
+        const compraStatus = {
+            ...compra,
+            status
+        }
+
+        //AQUI ESTAMOS OLDTAREFAS ESTA RECEBENDO A LISTA DE TODOS OS DADOS EXCETO OS QUE A GENTE MEXEU
+        const oldTarefas = dados.filter((dado) => dado.id !== compra.id)
+        //ESTA SETANDO NA LISTA TODOS OS DADOS RECEBIDOS E A NOVA TAREFA EDITADA
+        setDados([...oldTarefas, compraStatus])
+
+
+    }
+
     return (
         <div className="flex">
             <Sidebar />
@@ -72,7 +87,9 @@ const Compras = () => {
                                         className="ml-auto mr-2"
                                         onClick={() => handleDialogOpen(compra)}
                                     />
-                                    <Trash2Icon />
+                                    <Trash2Icon
+                                        onClick={() => handleCompraStatus(compra, "deletado")}
+                                    />
                                 </CardContent>
                             </Card>
 
