@@ -8,6 +8,12 @@ const DialogDetails = ({ open, setOpen, tarefaSelecionada }) => {
         setOpen(false)
     }
 
+    const statusColor = {
+        'Em aberto': 'text-gray-500',
+        'Em andamento': 'text-yellow-500',
+        'Finalizado': 'text-green-500'
+    }
+
     return (
         <div>
             <Dialog open={open} onOpenChange={setOpen}>
@@ -17,6 +23,7 @@ const DialogDetails = ({ open, setOpen, tarefaSelecionada }) => {
                         <DialogDescription>ID: {tarefaSelecionada?.id}</DialogDescription>
                     </DialogHeader>
                     <h1>{tarefaSelecionada?.descricao}</h1>
+                    <h1 className={statusColor[tarefaSelecionada?.status]}>{tarefaSelecionada?.status}</h1>
                     <DialogFooter>
                         <Button className="flex-1" variant="outline">Salvar</Button>
                         <Button className="flex-1" onClick={() => handleDialogClose()}>Cancelar</Button>
