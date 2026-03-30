@@ -30,6 +30,11 @@ const Compras = () => {
         return total + compra.valor
     }, 0)
 
+    //valor de itens comprados
+    const valorComprado = comprasComprado.reduce((total, compra) => {
+        return total + compra.valor
+    }, 0)
+
 
     const handleCompraStatus = (compra, status) => {
         const compraStatus = {
@@ -62,7 +67,7 @@ const Compras = () => {
                     <Card className="flex-1 h-37.5 shadow items-center">
                         <CardContent className="flex items-center flex-col">
                             <h1 className="text-lg font-medium">Valor de itens comprados</h1>
-                            <h1 className="text-[70px] font-medium">100</h1>
+                            <h1 className="text-[70px] font-medium">{valorComprado.toFixed(2)}</h1>
                         </CardContent>
                     </Card>
 
