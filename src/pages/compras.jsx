@@ -1,8 +1,8 @@
 import DialogCompras from "@/components/DialogComprasDetails"
 import DialogNewCompras from "@/components/DialogNewCompras"
 import Sidebar from "@/components/Sidebar"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { ScrollArea } from "@/components/ui/scroll-area"
 import { listadeCompras } from "@/compras"
 import { EyeIcon, Trash2Icon } from "lucide-react"
 import { useState } from "react"
@@ -61,7 +61,7 @@ const Compras = () => {
                     <Card className="flex-1 h-37.5 shadow items-center">
                         <CardContent className="flex items-center flex-col">
                             <h1 className="text-lg font-medium">Valor de itens a serem comprados</h1>
-                            <h1 className="text-[70px] font-medium">{valorComprar}</h1>
+                            <h1 className="text-[70px] font-medium">{valorComprar.toFixed(2)}</h1>
                         </CardContent>
                     </Card>
 
@@ -71,26 +71,21 @@ const Compras = () => {
                             <h1 className="text-[70px] font-medium">{valorComprado.toFixed(2)}</h1>
                         </CardContent>
                     </Card>
-
-                    <Card className="flex-1 h-37.5 shadow items-center">
-                        <CardContent className="flex items-center flex-col">
-                            <h1 className="text-lg font-medium">a definir</h1>
-                            <h1 className="text-[70px] font-medium">100</h1>
-                        </CardContent>
-                    </Card>
                 </div>
 
                 {/* Div de tabelas*/}
-                <div className="flex-1 flex p-4 gap-8">
+                <div className="flex p-4 min-h-0">
 
                     {/*Card de compras */}
-                    <Card className="flex-1 shadow ">
+                    <Card className="flex-1 shadow flex flex-col mr-4">
                         <CardHeader className="flex justify-between">
                             <CardTitle>Lista de compras</CardTitle>
                             <DialogNewCompras className="ml-auto" dados={dados} setDados={setDados}/>
                         </CardHeader>
+
+                        <ScrollArea className="flex-1 h-0">
                         {comprasComprar.map((compra) => (
-                            <Card key={compra.id} className="ml-3 mr-3 hover:bg-gray-100">
+                            <Card key={compra.id} className="ml-3 mr-3 mb-2 mt-1 hover:bg-gray-100">
                                 <CardContent
                                     className="flex items-center "
                                 >
@@ -106,15 +101,18 @@ const Compras = () => {
                             </Card>
 
                         ))}
+                        
+                        </ScrollArea>
                     </Card>
 
                     {/*Card de já comprados */}
-                    <Card className="flex-1 shadow">
+                    <Card className="flex-1 shadow min-h-0">
                         <CardHeader>
                             <CardTitle>Já comprados</CardTitle>
                         </CardHeader>
+                        <ScrollArea className="flex-1 h-0">
                         {comprasComprado.map((compra) => (
-                            <Card key={compra.id} className="ml-3 mr-3 hover:bg-gray-100">
+                            <Card key={compra.id} className="ml-3 mr-3 mt-1 mb-2 hover:bg-gray-100">
                                 <CardContent
                                     className="flex items-center"
                                 >
@@ -128,6 +126,7 @@ const Compras = () => {
                                 </CardContent>
                             </Card>
                         ))}
+                        </ScrollArea>
                     </Card>
                     <DialogCompras open={open} setOpen={setOpen} comprasComprar={tarefasSelecionada} />
 
