@@ -56,7 +56,7 @@ const Compras = () => {
             <div className="flex flex-col h-screen w-screen">
 
                 {/* Div de somas*/}
-                <div className="flex p-4 gap-4 bg-amber-200">
+                <div className="flex p-4 gap-4">
                     <Card className="flex-1 h-37.5 shadow items-center">
                         <CardContent className="flex items-center flex-col">
                             <h1 className="text-lg font-medium">Valor de itens a serem comprados</h1>
@@ -80,7 +80,7 @@ const Compras = () => {
                 </div>
 
                 {/* Div de tabelas*/}
-                <div className="flex-1 flex p-4 gap-8 bg-amber-300">
+                <div className="flex-1 flex p-4 gap-8">
 
                     {/*Card de compras */}
                     <Card className="flex-1 shadow ">
@@ -113,8 +113,18 @@ const Compras = () => {
                             <CardTitle>Já comprados</CardTitle>
                         </CardHeader>
                         {comprasComprado.map((compra) => (
-                            <Card key={compra.id} className="ml-3 mr-3">
-                                <CardContent className="">{compra.nome} - R${compra.valor}</CardContent>
+                            <Card key={compra.id} className="ml-3 mr-3 hover:bg-gray-100">
+                                <CardContent
+                                    className="flex items-center"
+                                >
+                                    {compra.nome} - R${compra.valor}
+                                    <EyeIcon className="ml-auto mr-2"
+                                        onClick={() => handleDialogOpen(compra)}
+                                    />
+                                    <Trash2Icon
+                                        onClick={() => handleCompraStatus(compra, "deletado")}
+                                    />
+                                </CardContent>
                             </Card>
                         ))}
                     </Card>
