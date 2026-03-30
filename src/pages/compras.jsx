@@ -1,4 +1,5 @@
-import DialogCompras from "@/components/DialogCompras"
+import DialogCompras from "@/components/DialogComprasDetails"
+import DialogNewCompras from "@/components/DialogNewCompras"
 import Sidebar from "@/components/Sidebar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -84,9 +85,9 @@ const Compras = () => {
 
                     {/*Card de compras */}
                     <Card className="flex-1 shadow ">
-                        <CardHeader className="flex">
+                        <CardHeader className="flex justify-between">
                             <CardTitle>Lista de compras</CardTitle>
-                            <Button variant="outline" className="items-center ml-auto">Criar novo item</Button>
+                            <DialogNewCompras className="ml-auto" dados={dados} setDados={setDados}/>
                         </CardHeader>
                         {comprasComprar.map((compra) => (
                             <Card key={compra.id} className="ml-3 mr-3 hover:bg-gray-100">
