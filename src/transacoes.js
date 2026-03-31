@@ -1,5 +1,5 @@
 export const listaTransacoes = [
-    {id: 1, nome: 'Salário', tipo: 'Entrada', valor: 2.500, data: '13/09/2002'},
+    {id: 1, nome: 'Salário', tipo: 'Entrada', valor: 2500.9, data: '13/09/2002'},
     {id: 2, nome: 'Açai', tipo: 'Saida', valor: 25, data: '13/09/2002'},
     {id: 3, nome: 'Pão de mel', tipo: 'Saida', valor: 19.90, data: '13/09/2002'},
     {id: 4, nome: 'Documento da moto', tipo: 'Saida', valor: 175.90, data: '13/09/2002'},
