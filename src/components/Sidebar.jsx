@@ -26,14 +26,14 @@ const Sidebar = () => {
                 <Button asChild variant="link" className="text-sm text-white justify-start">
                     <Link to="/tarefas">
                     <CheckSquare2Icon size={18} />
-                    Tarefas
+                    Lista de Tarefas
                     </Link>
                 </Button>
 
                 <Button asChild variant="link" className="text-sm text-white justify-start">
                     <Link to="/compras"> 
                     <ShoppingCart size={18} />
-                    Compras
+                    Lista de Compras
                     </Link>
                 </Button>
 

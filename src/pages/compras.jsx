@@ -79,22 +79,23 @@ const Compras = () => {
                     {/*Card de compras */}
                     <Card className="flex-1 shadow flex flex-col mr-4">
                         <CardHeader className="flex justify-between">
-                            <CardTitle>Lista de compras</CardTitle>
+                            <CardTitle className="text-yellow-600">Lista de compras ({comprasComprar.length})</CardTitle>
                             <DialogNewCompras className="ml-auto" dados={dados} setDados={setDados}/>
                         </CardHeader>
 
                         <ScrollArea className="flex-1 h-0">
                         {comprasComprar.map((compra) => (
-                            <Card key={compra.id} className="ml-3 mr-3 mb-2 mt-1 hover:bg-gray-100">
+                            <Card key={compra.id} className="ml-3 mr-3 mb-2 mt-1 hover:bg-gray-100 shadow">
                                 <CardContent
                                     className="flex items-center "
                                 >
                                     {compra.nome} - R${compra.valor}
                                     <EyeIcon
-                                        className="ml-auto mr-2"
+                                        className="ml-auto mr-2 text-gray-400"
                                         onClick={() => handleDialogOpen(compra)}
                                     />
                                     <Trash2Icon
+                                        className="text-red-400"
                                         onClick={() => handleCompraStatus(compra, "deletado")}
                                     />
                                 </CardContent>
@@ -108,19 +109,20 @@ const Compras = () => {
                     {/*Card de já comprados */}
                     <Card className="flex-1 shadow min-h-0">
                         <CardHeader>
-                            <CardTitle>Já comprados</CardTitle>
+                            <CardTitle className="text-green-600">Já comprados ({comprasComprado.length})</CardTitle>
                         </CardHeader>
                         <ScrollArea className="flex-1 h-0">
                         {comprasComprado.map((compra) => (
-                            <Card key={compra.id} className="ml-3 mr-3 mt-1 mb-2 hover:bg-gray-100">
+                            <Card key={compra.id} className="ml-3 mr-3 mt-1 mb-2 hover:bg-gray-100 shadow">
                                 <CardContent
                                     className="flex items-center"
                                 >
                                     {compra.nome} - R${compra.valor}
-                                    <EyeIcon className="ml-auto mr-2"
+                                    <EyeIcon className="ml-auto mr-2 text-gray-400"
                                         onClick={() => handleDialogOpen(compra)}
                                     />
                                     <Trash2Icon
+                                        className="text-red-400"
                                         onClick={() => handleCompraStatus(compra, "deletado")}
                                     />
                                 </CardContent>

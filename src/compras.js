@@ -15,7 +15,7 @@ export const listadeCompras = [
     {id: 14, nome: "Açucar", valor:5.99, status:"comprar"},
     {id: 15, nome: "Adoçante", valor:8, status:"comprar"},
     {id: 16, nome: "Gelo", valor:10, status:"comprar"},
-    {id: 17, nome: "Morango", valor:9.99, status:"compradp"},
+    {id: 17, nome: "Morango", valor:9.99, status:"comprado"},
     {id: 18, nome: "Arroz", valor:35.99, status:"comprado"},
     {id: 19, nome: "Macarrão", valor:10, status:"comprar"},
     {id: 20, nome: "Molho", valor:1.99, status:"comprado"},
