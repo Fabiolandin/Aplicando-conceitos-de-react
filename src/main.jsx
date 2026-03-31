@@ -11,6 +11,7 @@ import ContadorUseEffect from './pages/contador-useeffect'
 import Menu from './pages/menu'
 import Tarefas from './pages/tarefas'
 import Compras from './pages/compras'
+import Dash from './pages/dash'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -21,6 +22,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/contador2" element={<ContadorUseEffect />} />
       <Route path="/tarefas" element={<Tarefas />} />
       <Route path="/compras" element={<Compras />} />
+      <Route path="/dash" element={<Dash />} />
     </Routes>
   </BrowserRouter>
     <Toaster />
