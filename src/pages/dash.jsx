@@ -4,7 +4,7 @@ import { Card, CardContent, CardHeader } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Table, TableHead, TableHeader, TableRow, TableBody, TableCell } from "@/components/ui/table"
 import { listaTransacoes } from "@/transacoes"
-import { EyeIcon, TrashIcon } from "lucide-react"
+import { EyeIcon, Trash2Icon } from "lucide-react"
 import { useState } from "react"
 
 const Dash = () => {
@@ -34,14 +34,14 @@ const Dash = () => {
                     <Card className="flex-1 h-37.5 shadow items-center">
                         <CardContent className="flex flex-col items-center">
                             <h1 className="font-bold text-2xl">Entradas</h1>
-                            <h1 className="text-[50px] font-bold">R${valorEntrada.toLocaleString('pt-BR')}</h1>
+                            <h1 className="text-[50px] font-bold">R$ {valorEntrada.toLocaleString('pt-BR')}</h1>
                         </CardContent>
                     </Card>
 
                     <Card className="flex-1 h-37.5 shadow items-center">
                         <CardContent className="flex flex-col items-center">
                             <h1 className="font-bold text-2xl">Saídas</h1>
-                            <h1 className="text-[50px] font-bold">R${valorSaida.toLocaleString('pt-BR')}</h1>
+                            <h1 className="text-[50px] font-bold">R$ {valorSaida.toLocaleString('pt-BR')}</h1>
                         </CardContent>
                     </Card>
 
@@ -90,7 +90,7 @@ const Dash = () => {
                                                     <EyeIcon
                                                         className="text-gray-400"
                                                     />
-                                                    <TrashIcon
+                                                    <Trash2Icon
                                                         className="text-red-400"
                                                     />
                                                 </TableCell>
