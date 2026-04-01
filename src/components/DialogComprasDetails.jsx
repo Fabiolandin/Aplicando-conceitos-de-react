@@ -20,11 +20,10 @@ const DialogCompras = ({ open, setOpen, comprasComprar }) => {
             <Dialog open={open} onOpenChange={setOpen}>
                 <DialogContent>
                     <DialogHeader>
-                        <DialogTitle>Compras</DialogTitle>
-                        <DialogDescription>comprinhas</DialogDescription>
+                        <DialogTitle>{comprasComprar?.nome}</DialogTitle>
+                        <DialogDescription>{comprasComprar?.status}</DialogDescription>
                     </DialogHeader>
-                    <h1>{comprasComprar?.nome}</h1>
-                    <h1>{comprasComprar?.status}</h1>
+
                     <DialogFooter>
 
                         <Button
