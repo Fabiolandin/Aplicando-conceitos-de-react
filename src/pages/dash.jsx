@@ -1,7 +1,7 @@
-import DialogTransacao from "@/components/DialogTransacao"
+import DialogNewTransacao from "@/components/DialogNewTransacao"
+import DialogTransacaoDetails from "@/components/DialogTransacaoDetails"
 import Sidebar from "@/components/Sidebar"
-import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader } from "@/components/ui/card"
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Table, TableHead, TableHeader, TableRow, TableBody, TableCell } from "@/components/ui/table"
 import { listaTransacoes } from "@/transacoes"
@@ -79,9 +79,9 @@ const Dash = () => {
                 {/* Div das transações*/}
                 <div className="p-4 flex-1 min-h-0">
                     <Card className="h-full flex flex-col shadow">
-                        <CardHeader className="flex items-center">
-                            <h1>Card de Tranções</h1>
-                            <Button className="ml-auto"> Criar nova transação</Button>
+                        <CardHeader className="flex items-center justify-between">
+                            <CardTitle>Card de Tranções</CardTitle>
+                            <DialogNewTransacao className="flex ml-auto" dados={dados} setDados={setDados}/>
                         </CardHeader>
                         <CardContent className="flex-1 min-h-0">
                             <ScrollArea className="h-full">
@@ -96,7 +96,7 @@ const Dash = () => {
                                         </TableRow>
                                     </TableHeader>
                                     <TableBody>
-                                        {listaTransacoes.map((listas) => (
+                                        {dados.map((listas) => (
                                             <TableRow key={listas.id}>
                                                 <TableCell className="">{listas.nome}</TableCell>
                                                 <TableCell>{listas.tipo}</TableCell>
@@ -118,7 +118,7 @@ const Dash = () => {
                             </ScrollArea>
                         </CardContent>
                     </Card>
-                    <DialogTransacao open={open} setOpen={setOpen} transacaoSelecionada={transacaoSelecionada}/>
+                    <DialogTransacaoDetails open={open} setOpen={setOpen} transacaoSelecionada={transacaoSelecionada}/>
                 </div>
 
             </div>

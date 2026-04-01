@@ -1,7 +1,7 @@
 import { Button } from "./ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog"
 
-const DialogTransacao = ({ open, setOpen, transacaoSelecionada }) => {
+const DialogTransacaoDetails = ({ open, setOpen, transacaoSelecionada }) => {
 
     const handleDialogClose = () => {
         setOpen(false)
@@ -16,20 +16,14 @@ const DialogTransacao = ({ open, setOpen, transacaoSelecionada }) => {
                         <DialogDescription>{transacaoSelecionada?.tipo}</DialogDescription>
                     </DialogHeader>
                     <div className="flex gap-2">
-                        <h1>Valor:</h1>
-                        <h1>{transacaoSelecionada?.valor}</h1>
+                        <h1 className="font-bold">Valor:</h1>
+                        <h1>R$ {transacaoSelecionada?.valor}</h1>
                     </div>
                     <div className="flex gap-2">
-                        <h1>Data da transação:</h1>
+                        <h1 className="font-bold">Data da transação:</h1>
                         <h1>{transacaoSelecionada?.data}</h1>
                     </div>
                     <DialogFooter>
-                        <Button
-                            className="flex-1"
-                            variant="outline"
-                        >
-                            Salvar
-                        </Button>
                         <Button
                             className="flex-1"
                             onClick={() => handleDialogClose()}
@@ -43,4 +37,4 @@ const DialogTransacao = ({ open, setOpen, transacaoSelecionada }) => {
     )
 }
 
-export default DialogTransacao
+export default DialogTransacaoDetails
