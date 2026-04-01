@@ -1,22 +1,41 @@
 import { Button } from "./ui/button"
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog"
 
-const DialogTransacao = () => {
+const DialogTransacao = ({ open, setOpen, transacaoSelecionada }) => {
+
+    const handleDialogClose = () => {
+        setOpen(false)
+    }
+
     return (
         <div>
-            <Dialog>
+            <Dialog open={open} onOpenChange={setOpen}>
                 <DialogContent>
                     <DialogHeader>
-                    <DialogTitle>Titulo</DialogTitle>
-                    <DialogDescription>Descrição</DialogDescription>
+                        <DialogTitle>{transacaoSelecionada?.nome}</DialogTitle>
+                        <DialogDescription>{transacaoSelecionada?.tipo}</DialogDescription>
                     </DialogHeader>
-                    <div className="flex">
-                        <h1>Valor</h1>
+                    <div className="flex gap-2">
+                        <h1>Valor:</h1>
+                        <h1>{transacaoSelecionada?.valor}</h1>
+                    </div>
+                    <div className="flex gap-2">
                         <h1>Data da transação:</h1>
+                        <h1>{transacaoSelecionada?.data}</h1>
                     </div>
                     <DialogFooter>
-                        <Button>Salvar</Button>
-                        <Button>Cancelar</Button>
+                        <Button
+                            className="flex-1"
+                            variant="outline"
+                        >
+                            Salvar
+                        </Button>
+                        <Button
+                            className="flex-1"
+                            onClick={() => handleDialogClose()}
+                        >
+                            Cancelar
+                        </Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>

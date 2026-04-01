@@ -1,3 +1,4 @@
+import DialogTransacao from "@/components/DialogTransacao"
 import Sidebar from "@/components/Sidebar"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader } from "@/components/ui/card"
@@ -9,20 +10,34 @@ import { useState } from "react"
 
 const Dash = () => {
 
+    //dados recebendo um useState da lista de dados com as transações
     const [dados, setDados] = useState(listaTransacoes)
 
+    //State para setar a abertura de Dialog de Details
+    const [open, setOpen] = useState(false);
+
+    //Listas filtradas de dados com tipos de 'entrada' e 'saida'
     const listaEntrada = dados.filter((listas) => listas.tipo === "Entrada")
     const listaSaida = dados.filter((listas) => listas.tipo === "Saida")
 
-    //
+    //função para calculos de entrada
     const valorEntrada = listaEntrada.reduce((total, entrada) => {
         return total + entrada.valor
     }, 0)
 
-    //
+    //função para calculo de saídas
     const valorSaida = listaSaida.reduce((total, saida) => {
         return total + saida.valor
     }, 0)
+
+    //função para passar a lista de dados selecionados
+    const [transacaoSelecionada, settransacaoSelecionada] = useState(null);
+    
+    //Função para abrir o dialog já passando a tarefa selecionada
+    const handleDialogOpen = (listas) => {
+        settransacaoSelecionada(listas)
+        setOpen(true)
+    }
 
     return (
         <div className="flex h-screen">
@@ -31,20 +46,21 @@ const Dash = () => {
 
                 {/* Div dos cards*/}
                 <div className="flex p-4 gap-4 shrink-0">
+                    {/*Card das Entradas*/}
                     <Card className="flex-1 h-37.5 shadow items-center">
                         <CardContent className="flex flex-col items-center">
                             <h1 className="font-bold text-2xl">Entradas</h1>
                             <h1 className="text-[50px] font-bold">R$ {valorEntrada.toLocaleString('pt-BR')}</h1>
                         </CardContent>
                     </Card>
-
+                    {/*Card das Saidas*/}
                     <Card className="flex-1 h-37.5 shadow items-center">
                         <CardContent className="flex flex-col items-center">
                             <h1 className="font-bold text-2xl">Saídas</h1>
                             <h1 className="text-[50px] font-bold">R$ {valorSaida.toLocaleString('pt-BR')}</h1>
                         </CardContent>
                     </Card>
-
+                    {/*Card dos Saidas*/}
                     <Card className="flex-1 h-37.5 shadow items-center">
                         <CardContent className="flex flex-col items-center">
                             <h1 className="font-bold text-2xl">Saldo</h1>
@@ -89,6 +105,7 @@ const Dash = () => {
                                                 <TableCell className="flex gap-1 text-right">
                                                     <EyeIcon
                                                         className="text-gray-400"
+                                                        onClick={() => handleDialogOpen(listas)}
                                                     />
                                                     <Trash2Icon
                                                         className="text-red-400"
@@ -101,6 +118,7 @@ const Dash = () => {
                             </ScrollArea>
                         </CardContent>
                     </Card>
+                    <DialogTransacao open={open} setOpen={setOpen} transacaoSelecionada={transacaoSelecionada}/>
                 </div>
 
             </div>
