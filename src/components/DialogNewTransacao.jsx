@@ -41,24 +41,27 @@ const DialogNewTransacao = ({ dados, setDados }) => {
                     </DialogHeader>
                     <form onSubmit={handleSubmit}>
 
-                        <label>Nome da transação:</label>
+                        <label className="mb-1">Nome da transação</label>
                         <Input
                             placeholder="Digite o nome da transação"
                             value={nomeTransacao}
+                            className="mb-1"
                             onChange={(e) => setnomeTransacao(e.target.value)}
                         />
 
-                        <label>Tipo da transação:</label>
+                        <label className="mb-1">Tipo da transação</label>
                         <Input
                             placeholder="Digite o tipo da transação"
                             value={tipoTransacao}
+                            className="mb-1"
                             onChange={(e) => settipoTransacao(e.target.value)}
                         />
 
-                        <label>Valor:</label>
+                        <label className="mb-1">Valor</label>
                         <Input
                             placeholder="Digite o valor da transação"
                             value={valorTransacao}
+                            className="mb-1"
                             onChange={(e) => setvalorTransacao(e.target.value)}
                         />
                         

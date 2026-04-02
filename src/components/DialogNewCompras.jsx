@@ -34,18 +34,20 @@ const DialogNewCompras = ({dados, setDados }) => {
                         <DialogDescription>Insira os itens abaixo</DialogDescription>
                     </DialogHeader>
                     <form onSubmit={handleSubmit} className="mb-1">
-                        <label>Nome:</label>
+                        <label className="mb-1">Nome:</label>
                         <Input
                             placeholder="digite o nome do item de compra"
                             value={nomeItem}
+                            className="mb-1"
                             onChange={(e) => setnomeItem(e.target.value)}
                         />
 
 
-                        <label>Valor:</label>
+                        <label className="mb-1">Valor:</label>
                         <Input
                             placeholder="digite o valor do item de compra"
                             value={valorItem}
+                            className="mb-1"
                             onChange={(e) => setvalorItem(e.target.value)}
                         />
                     <DialogFooter>
