@@ -7,6 +7,7 @@ import { Table, TableHead, TableHeader, TableRow, TableBody, TableCell } from "@
 import { listaTransacoes } from "@/transacoes"
 import { EyeIcon, Trash2Icon } from "lucide-react"
 import { useState } from "react"
+import { toast } from "sonner"
 
 const Dash = () => {
 
@@ -37,6 +38,13 @@ const Dash = () => {
     const handleDialogOpen = (listas) => {
         settransacaoSelecionada(listas)
         setOpen(true)
+    }
+
+    //Verdadeiro Delete
+    const handleDelete = (listas) => {
+        const novaLista = dados.filter((dado) => dado.id !== listas.id)
+        setDados(novaLista)
+        toast.success('Item deletado com sucesso!')
     }
 
     return (
@@ -80,7 +88,7 @@ const Dash = () => {
                 <div className="p-4 flex-1 min-h-0">
                     <Card className="h-full flex flex-col shadow">
                         <CardHeader className="flex items-center justify-between">
-                            <CardTitle>Card de Tranções</CardTitle>
+                            <CardTitle>Card de Transações</CardTitle>
                             <DialogNewTransacao className="flex ml-auto" dados={dados} setDados={setDados}/>
                         </CardHeader>
                         <CardContent className="flex-1 min-h-0">
@@ -109,6 +117,7 @@ const Dash = () => {
                                                     />
                                                     <Trash2Icon
                                                         className="text-red-400"
+                                                        onClick={() => handleDelete(listas)}
                                                     />
                                                 </TableCell>
                                             </TableRow>
