@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom"
 import { Button } from "./ui/button"
-import { CheckSquare2Icon, LayoutDashboardIcon, PlusIcon, ShoppingCart } from "lucide-react"
+import { CheckSquare2Icon, LayoutDashboardIcon, PlusIcon, ShoppingCart, SquareArrowOutUpRightIcon } from "lucide-react"
 
 const Sidebar = () => {
     return (
@@ -41,6 +41,14 @@ const Sidebar = () => {
                 <Link to="/dash">
                     <LayoutDashboardIcon size={18} />
                     Dash Financeira
+                </Link>
+            </Button>
+
+            
+            <Button asChild variant="link" className="text-sm text-white justify-start">
+                <Link to="/suporte">
+                    <SquareArrowOutUpRightIcon size={18} />
+                    Pagina de Suporte
                 </Link>
             </Button>
 

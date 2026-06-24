@@ -12,6 +12,7 @@ import Menu from './pages/menu'
 import Tarefas from './pages/tarefas'
 import Compras from './pages/compras'
 import Dash from './pages/dash'
+import Suporte from './pages/suporte'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
       <Route path="/tarefas" element={<Tarefas />} />
       <Route path="/compras" element={<Compras />} />
       <Route path="/dash" element={<Dash />} />
+      <Route path="/suporte" element={<Suporte />} />
     </Routes>
   </BrowserRouter>
     <Toaster />
