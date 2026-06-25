@@ -2,13 +2,22 @@ import { useState } from "react"
 import { Dialog, DialogContent, DialogFooter, DialogHeader, DialogTitle } from "./ui/dialog"
 import { Input } from "./ui/input"
 import { Button } from "./ui/button"
+import { Chamado, StatusChamado } from "@/types/chamado";
 
-const DialogNewChamado = ({ open, setOpen, dados, setDados, qtdChamados }) => {
+interface DialogNewChamadoProps {
+    open: boolean;
+    setOpen: (open: boolean) => void;
+    dados: Chamado[];
+    setDados: React.Dispatch<React.SetStateAction<Chamado[]>>
+    qtdChamados: number;
+}
+
+const DialogNewChamado = ({ open, setOpen, dados, setDados, qtdChamados }: DialogNewChamadoProps) => {
 
     //consts para pegar do form e salvar
     const [tituloChamado, setTituloChamado] = useState('')
     const [descricaoChamado, setDescricaoChamado] = useState('')
-    const [statusChamado] = useState('Em aberto')
+    const [statusChamado] = useState<StatusChamado>('Em aberto')
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -17,7 +26,7 @@ const DialogNewChamado = ({ open, setOpen, dados, setDados, qtdChamados }) => {
             //esquema para sempre contar os tickets +1
             id: qtdChamados + 1,
             titulo: tituloChamado,
-            descricaoChamado: descricaoChamado,
+            descricao: descricaoChamado,
             status: statusChamado
         }
         setDados([...dados, novoChamado])
