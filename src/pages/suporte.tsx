@@ -6,16 +6,18 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardTitle } from "@/components/ui/card";
 import { ViewIcon } from "lucide-react";
 import { useState } from "react";
+import type { Chamado } from "@/types/chamado"
+
 
 const Suporte = () => {
     //recebendo a lista de chamados
-    const [listadeChamados, setlistadeChamados] = useState(chamados);
+    const [listadeChamados, setlistadeChamados] = useState<Chamado[]>(chamados);
     
     //state para abrir dialog
     const [openDialogNewChamado, setOpenDialogNewChamado] = useState(false);
     const [openDialogDetailsChamado, setopenDialogDetailsChamado] = useState(false)
-    const [chamadoSelecionado, setchamadoSelecionado] = useState(null);
-    console.log("Console 1"+ chamadoSelecionado)
+
+    const [chamadoSelecionado, setchamadoSelecionado] = useState<Chamado | null>(null);
     
     //Dados filtrados para os cards
     const chamadosEmAndamento = listadeChamados.filter((chamados) => chamados.status === "Em andamento")
@@ -28,11 +30,10 @@ const Suporte = () => {
         setOpenDialogNewChamado(true)
     }
 
-    const dialogDetailsChamado = (chamado) => {
+    const dialogDetailsChamado = (chamado: Chamado) => {
         setopenDialogDetailsChamado(true)
         setchamadoSelecionado(chamado)
     }
-    console.log("Console 2"+ chamadoSelecionado)
 
     return (
         <div className="flex">
@@ -74,7 +75,8 @@ const Suporte = () => {
                         </CardTitle>
 
                         {listadeChamados.map((chamado) => (
-                            <Card className="p-2 flex shadow">
+                            
+                            <Card className="p-2 flex shadow" key={chamado.id}>
                                 <CardContent className="flex">
                                     {chamado.id} - {chamado.titulo}
                                     <ViewIcon 

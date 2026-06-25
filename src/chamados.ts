@@ -1,4 +1,6 @@
-export const chamados = [
+import { Chamado } from "./types/chamado";
+
+export const chamados: Chamado[] = [
     {id: 1, titulo: "Bug na tela de produtos", descricao: "começar os documentos do TCC", status: "Finalizado"},
     {id: 2, titulo: "Bug na tela de cadastro", descricao: "Comprar roupas online no site", status:"Em aberto"},
     {id: 3, titulo: "Bug na tela de vendas", descricao: "Ver o curso da full stack Club", status:"Finalizado"},

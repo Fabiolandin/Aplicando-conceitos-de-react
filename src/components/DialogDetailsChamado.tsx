@@ -1,8 +1,14 @@
 import { Button } from "./ui/button"
 import { Dialog, DialogContent, DialogFooter, DialogTitle } from "./ui/dialog"
+import type { Chamado } from "@/types/chamado";
 
-const DialogDetailsChamado = ({open, setOpen, chamadoSelecionados}) => {
-    console.log("console do dialog"+chamadoSelecionados)
+interface DialogDetailsProps {
+    open: boolean;
+    setOpen: (open: boolean) => void;
+    chamadoSelecionados: Chamado | null;
+}
+
+const DialogDetailsChamado = ({ open, setOpen, chamadoSelecionados }: DialogDetailsProps) => {
     return (
         <div>
             <Dialog open={open} onOpenChange={setOpen} >
@@ -11,7 +17,9 @@ const DialogDetailsChamado = ({open, setOpen, chamadoSelecionados}) => {
                     <h1>Titulo: {chamadoSelecionados?.titulo}</h1>
                     <h1>Descrição: {chamadoSelecionados?.descricao}</h1>
                     <DialogFooter>
-                        <Button>Cancelar</Button>
+                        <Button
+                        onClick={() => setOpen(false)}
+                        >Cancelar</Button>
                     </DialogFooter>
                 </DialogContent>
             </Dialog>
